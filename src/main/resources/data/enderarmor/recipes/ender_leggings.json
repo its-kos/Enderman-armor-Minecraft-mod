@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "minecraft:enderpearl"
+    }
+  },
+  "pattern": [
+    "X X X",
+    "X   X",
+    "X   X"
+  ],
+  "result": {
+    "item": "EnderArmor:ender_leggings"
+  }
+}

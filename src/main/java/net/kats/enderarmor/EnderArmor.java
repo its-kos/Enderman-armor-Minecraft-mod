@@ -1,6 +1,7 @@
 package net.kats.enderarmor;
 
 import com.mojang.logging.LogUtils;
+import net.kats.enderarmor.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
@@ -18,15 +19,17 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(EnderArmor.MODID)
+@Mod(EnderArmor.MOD_ID)
 public class EnderArmor {
 
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "enderarmor";
+    public static final String MOD_ID = "enderarmor";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public EnderArmor() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -38,26 +41,19 @@ public class EnderArmor {
         modEventBus.addListener(this::addCreative);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-    }
+    private void commonSetup(final FMLCommonSetupEvent event) {}
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
-        if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) {
+        if (event.getTab() == CreativeModeTabs.COMBAT) {
+            event.accept(ModItems.ENDER_BOOTS);
+            event.accept(ModItems.ENDER_CHESTPLATE);
+            event.accept(ModItems.ENDER_LEGGINGS);
+            event.accept(ModItems.ENDER_HELMET);
         }
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
-
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
