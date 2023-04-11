@@ -27,9 +27,10 @@
   - Equipping, using and repairing the armor plays different unique sound effects.
 * New Mob interactions - (In development)
   - Certain mobs now interact with you in different ways.
-* New crafting recipe - (In development)
+* New crafting recipe - (Done)
   - This armor can be specially crafted using only nether items.
-
+* Overcharge recipe version - (In development)
+  - This armor can be overcharged when crafted with specific ingredients.
 
 ## How To Use
 
