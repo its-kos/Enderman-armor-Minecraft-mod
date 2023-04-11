@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "category": "armor",
   "key": {
     "X": {
-      "item": "minecraft:enderpearl"
+      "item": "minecraft:ender_pearl"
     }
   },
   "pattern": [
@@ -11,6 +11,6 @@
     "X X"
   ],
   "result": {
-    "item": "EnderArmor:ender_boots"
+    "item": "enderarmor:ender_boots"
   }
 }
