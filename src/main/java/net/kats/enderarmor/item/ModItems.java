@@ -37,7 +37,7 @@ public class ModItems {
                 500,
                 new int[]{20, 40, 50, 10},
                 300,
-                SoundEvents.ENDER_DRAGON_GROWL,
+                SoundEvents.ENDERMAN_AMBIENT,
                 0.0f,
                 0.0f,
                 () -> Ingredient.fromValues((Stream<? extends Ingredient.Value>) Items.ENDER_PEARL)
